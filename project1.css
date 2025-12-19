@@ -3,24 +3,35 @@ body{
     text-align:center;
     font-family: 'Quantico',sans-seriff;
 }
+.flex{
+    display:flex;
+    justify-content:center space-evenly;
+}
 .wrapper{
+    padding:5px;
     margin-left:auto;
     margin-right:auto;
-    display:flex;
-    justify-content:center;
-    width:40%;
-    height:200px;
+    width:65%;
+    height:auto;
     border:2px solid black;
     border-radius:5px;
     background-color:whitesmoke;
 }
 .wrapper:hover{
-    transform:scalex(1);
+    background-color:gainsboro;
 }
 .profile{
-    margin:50px;
+    margin:30px;
     height:100px;
     width:100px;
+    border:5px solid rgb(60,60,60,0.5);
+    border-radius:50%;
+}
+.school{
+    margin:20px;
+    height:180px;
+    width:180px;
+    border-radius:50%;
     border:5px solid rgb(60,60,60,0.5);
     border-radius:50%;
 }
