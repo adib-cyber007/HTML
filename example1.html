@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width , initial-scale=1.0">
+        <script>
+            var inp
+            var res
+            var totalscore=10
+            var sco
+            var rand=Math.floor(Math.random()*10)+1
+            function check()
+            {
+                inp=document.getElementById("input")
+                inpval=Number(inp.value)
+                sco=document.getElementById("score")
+                res=document.getElementById("result")
+                if(inpval==rand)
+                {
+                    res.textContent="You Won..."
+                }
+                else{
+                    totalscore=totalscore-1
+                    sco.textContent="Totalscore:"+totalscore
+                    if(totalscore==0)
+                    {
+                        res.textContent="You Lost..."
+                        
+                        reset()
+                    }
+                }
+                function reset()
+                {   
+                    res=document.getElementById("result")
+                    sco=document.getElementById("score")
+                    res.textContent=""
+                    sco.textContent="Totalscore:10"
+                    totalscore=10
+                    rand=Math.floor(Math.random()*10)+1
+                }
+            }
+        </script>
+        <style>
+            body{
+                margin:0;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                text-align:center;
+            }
+            .main{
+                margin-top:10%;
+                height:40%;
+            }
+            .btn{
+                display:flex;
+                margin-top:10px;
+                justify-content:center;
+            }
+            button{
+                border:2px solid black;
+                border-radius:8px;
+                margin: left 5px;
+                margin-right:5px;
+                padding:5px;
+                width:85px;
+            }
+            button:hover
+            {
+                background-color:gainsboro;
+                font-size:80%
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main">
+            <h1>
+                Guess the Number:
+            </h1>
+            <input id="input" placeholder="Enter Number">
+            <br>
+            <div class="btn">
+                <button id="reset" onclick="reset()">Reset</button>
+                <button id="btn" onclick="check()">Check</button>
+            </div>
+            <h2>Result:<span id="result"></span></h2>
+            <h2 id="score">Total score:10</h2>
+        </div>
+    </body>
+</html>
