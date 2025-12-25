@@ -7,7 +7,7 @@ body{
 .nav{
     top:0%;
     left:0%;
-    background-color:#468189;
+    background-color:#FF6A00;
     color:#FFFFFF;
     width:100%;
     height:auto;
@@ -67,7 +67,7 @@ body{
 
 .wrap h1{
     padding:10px 20px;
-    background-color:#1F7A8C;
+    background-color:#FF6A00;
     color:#FFFFFF;
     margin:0;
     border-radius:8px 8px 0 0;
@@ -75,16 +75,17 @@ body{
 
 .delete{
     margin-bottom:10px;
-    background-color:#1F7A8C;
-    color:#FFFFFF;
+    background-color:white;
+    color:#FF6A00;
     padding:10px;
-    border:none;
+    border:1px solid #FF6A00;
     border-radius:50%;
     cursor:pointer;
 }
 
 .delete:hover{
-    background-color:#468189;
+    background-color:#FF6A00;
+    color:white;
 }
 
 #add{

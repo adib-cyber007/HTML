@@ -1,3 +1,19 @@
+let locals
+let c=0
+function addlocal(title,task)
+{
+    let wrapcon=document.querySelector(".wrap-con")
+    let temp=document.createElement("div")
+    temp.setAttribute("class","wrap")
+    temp.setAttribute("id",++c)
+    temp.innerHTML="<h1>"+title+"</h1> <h3>"+task+"</h3> <button class='delete' onclick='del(event)'>Delete</button>"
+    wrapcon.appendChild(temp)
+}
+locals=JSON.parse(localStorage.getItem("locals"))
+for(let count=0; count<locals.titles.length ; count++)
+{
+    addlocal(locals.titles[count],locals.tasks[count])
+}
 function add(){
     var overl=document.getElementById("overlay")
     overl.style.display="block"
@@ -6,19 +22,24 @@ function add(){
 }
 function addpop()
 {
-    var inptitle=document.getElementById("title")
+    let inptitle=document.getElementById("title")
     title=inptitle.value
-    var inptask=document.getElementById("task")
+    let inptask=document.getElementById("task")
     task=inptask.value
-    var wrapcon=document.querySelector(".wrap-con")
-    var temp=document.createElement("div")
+    locals.titles.push(title)
+    locals.tasks.push(task)
+    let wrapcon=document.querySelector(".wrap-con")
+    let temp=document.createElement("div")
     temp.setAttribute("class","wrap")
-    temp.innerHTML="<h1>"+title+"</h1> <h3>"+task+"</h3> <button class='delete'>Delete</button>"
+    temp.setAttribute("id",++c)
+    temp.innerHTML="<h1>"+title+"</h1> <h3>"+task+"</h3> <button class='delete' onclick='del(event)'>Delete</button>"
     wrapcon.appendChild(temp)
     var overl=document.getElementById("overlay")
     var pop=document.getElementById("popup")
     overl.style.display="none"
     pop.style.display="none"
+    localStorage.setItem("locals",JSON.stringify(locals))
+
 }
 function popcancel()
 {
@@ -27,8 +48,7 @@ function popcancel()
     overl.style.display="none"
     pop.style.display="none"
 }
-document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("delete")) {
-        e.target.parentElement.remove();
-    }
-})
+function del(event){
+    event.target.parentElement.remove()
+}
+
