@@ -5,12 +5,12 @@ body{
 }
 
 .nav{
-    top:0%;
+    top:0px;
     left:0%;
     background-color:#FF6A00;
     color:#FFFFFF;
     width:100%;
-    height:auto;
+    height:10%;
     padding:10px 0;
 }
 
@@ -26,7 +26,7 @@ body{
     top:0;
     left:0;
     display:none;
-    position:absolute;
+    position:fixed;
     z-index:2;
 }
 
@@ -51,7 +51,7 @@ body{
     display:flex;
     flex-wrap:wrap;
     justify-content:space-evenly;
-    padding:10px;
+    padding:10px;;
 }
 
 .wrap{
@@ -89,11 +89,11 @@ body{
 }
 
 #add{
-    font-size:80px;
+    font-size:200%;
     border:none;
-    border-radius:100%;
-    width:120px;
-    height:120px;
+    border-radius:50%;
+    width:5%;
+    height:9%;
     padding:0;
     background-color:#FE5A1D;
     right:2%;

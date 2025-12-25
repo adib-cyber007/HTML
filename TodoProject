@@ -1,18 +1,17 @@
-let locals
-let c=0
-function addlocal(title,task)
+let locals =JSON.parse(localStorage.getItem("local")) || { items:[] }
+function addlocal(item,index)
 {
+    locals =JSON.parse(localStorage.getItem("local")) || {items:[]}
     let wrapcon=document.querySelector(".wrap-con")
     let temp=document.createElement("div")
+    temp.dataset.index=index
     temp.setAttribute("class","wrap")
-    temp.setAttribute("id",++c)
-    temp.innerHTML="<h1>"+title+"</h1> <h3>"+task+"</h3> <button class='delete' onclick='del(event)'>Delete</button>"
+    temp.innerHTML="<h1>"+item.ti+"</h1> <h3>"+item.ta+"</h3> <button class='delete' onclick='del(event)'>Delete</button>"
     wrapcon.appendChild(temp)
 }
-locals=JSON.parse(localStorage.getItem("locals"))
-for(let count=0; count<locals.titles.length ; count++)
+for(let count=0; count<locals.items.length; count++)
 {
-    addlocal(locals.titles[count],locals.tasks[count])
+    addlocal(locals.items[count],count)
 }
 function add(){
     var overl=document.getElementById("overlay")
@@ -26,20 +25,20 @@ function addpop()
     title=inptitle.value
     let inptask=document.getElementById("task")
     task=inptask.value
-    locals.titles.push(title)
-    locals.tasks.push(task)
+    locals.items.push({ti:title,ta:task})
     let wrapcon=document.querySelector(".wrap-con")
     let temp=document.createElement("div")
     temp.setAttribute("class","wrap")
-    temp.setAttribute("id",++c)
     temp.innerHTML="<h1>"+title+"</h1> <h3>"+task+"</h3> <button class='delete' onclick='del(event)'>Delete</button>"
     wrapcon.appendChild(temp)
     var overl=document.getElementById("overlay")
     var pop=document.getElementById("popup")
     overl.style.display="none"
     pop.style.display="none"
-    localStorage.setItem("locals",JSON.stringify(locals))
-
+    localStorage.setItem("local",JSON.stringify(locals))
+    temp.dataset.index=locals.items.length-1
+    inptitle.value=""
+    inptask.value=""
 }
 function popcancel()
 {
@@ -49,6 +48,11 @@ function popcancel()
     pop.style.display="none"
 }
 function del(event){
-    event.target.parentElement.remove()
+    let tempwrap=event.target.parentElement
+    let ind=tempwrap.dataset.index
+    locals.items.splice(ind,1)
+    tempwrap.remove()
+    localStorage.setItem("local",JSON.stringify(locals))
+
 }
 
