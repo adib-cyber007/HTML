@@ -5,7 +5,7 @@ body{
 }
 .flex{
     display:flex;
-    justify-content:center space-evenly;
+    justify-content:center;
 }
 .wrapper{
     padding:5px;
@@ -38,4 +38,31 @@ body{
 .text{
     margin-top:auto;
     margin-bottom:auto;
+}
+.load{
+    right:10px;
+    bottom:5px;
+    width:5%;
+    height:5%;
+    background-color:grey;
+    animation-name:loading;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+    animation-delay:2ms;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-play-state: running;
+
+}
+.load:hover{
+    animation-play-state: paused;
+
+}
+@keyframes loading{
+    from{
+        transform:rotate(360deg);
+    }   
+    to{
+        transform:rotate(-360deg);
+    }
 }
